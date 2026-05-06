@@ -10,3 +10,4 @@ The target partition was formatted with `ext4` and mounted to `$LFS`. To ensure 
 
 ## Initial Environment Variables
 - `LFS=/mnt/lfs`
+- `umask 022` : file mode creation mask (umask) to 022, which ensures that newly created files and directories are only writeable by their owner, but are readable and searchable by anyone
