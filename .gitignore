@@ -1,0 +1,15 @@
+# Ignore source packages and archives
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.patch.downloaded
+
+# Ignore compiled objects and binaries
+*.o
+*.so
+*.elf
+*.bin
+
+# Ignore build directories
+/build/
+/src/

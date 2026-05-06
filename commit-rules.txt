@@ -1,0 +1,48 @@
+=================================================================
+                  GIT COMMIT CONVENTION CHEAT SHEET
+=================================================================
+
+FORMAT:
+type(scope): concise description in lowercase
+
+EXAMPLE:
+config(kernel): enable strict memory protection flags
+
+-----------------------------------------------------------------
+1. TYPES (What kind of work is this?)
+-----------------------------------------------------------------
+feat     : A new feature or capability (e.g., adding a new tool)
+fix      : A bug fix (e.g., fixing a compilation error)
+config   : Modifying config files (.config, fstab, profiles)
+script   : Changes to bash automation or build scripts
+patch    : Applying custom diffs or security patches to source
+docs     : Documentation only (README, build notes, architecture)
+chore    : Maintenance tasks, restructuring directories, .gitignore
+refactor : Rewriting code without changing its behavior
+
+-----------------------------------------------------------------
+2. SCOPES (Where did the work happen? - Optional but recommended)
+-----------------------------------------------------------------
+(kernel)    : Linux kernel configurations or builds
+(toolchain) : GCC, binutils, cross-compiler tools
+(glibc)     : C library and core system headers
+(security)  : AppArmor, permissions, capability drops
+(boot)      : GRUB, fstab, initramfs, boot scripts
+(base)      : Coreutils, bash, standard user-space utilities
+
+-----------------------------------------------------------------
+3. RULES FOR THE DESCRIPTION (The Subject Line)
+-----------------------------------------------------------------
+- Use the imperative, present tense: "change" not "changed" nor "changes"
+- Do not capitalize the first letter
+- Do not place a period (.) at the end
+- Keep it under 50 characters if possible
+
+-----------------------------------------------------------------
+EXAMPLES IN PRACTICE:
+-----------------------------------------------------------------
+feat(security): integrate AppArmor into base system
+fix(toolchain): resolve gcc pass 2 linker error
+config(boot): mount root partition as read-only in fstab
+script(base): automate compilation of coreutils
+docs(kernel): document custom attack surface reduction flags
