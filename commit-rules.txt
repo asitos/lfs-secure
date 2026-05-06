@@ -3,7 +3,7 @@
 =================================================================
 
 FORMAT:
-type(scope): concise description in lowercase
+type(scope): concise description in lowercase.
 
 EXAMPLE:
 config(kernel): enable strict memory protection flags
