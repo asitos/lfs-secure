@@ -11,7 +11,7 @@ The Pcre2 package provides the next generation of Perl Compatible Regular Expres
 - **Performance Optimization (JIT):** Passed `--enable-jit` to enable Just-In-Time compilation, which massively accelerates pattern matching operations across the system.
 - **Modern Encoding Support:** Configured with `--enable-unicode`, `--enable-pcre2-16`, and `--enable-pcre2-32` to fully support UTF-8, UTF-16, and UTF-32 character strings.
 - **System Integration (Grep & Testing):** Leveraged previously compiled packages by passing `--enable-pcre2grep-libz` and `--enable-pcre2grep-libbz2` (allowing `pcre2grep` to directly search inside `.gz` and `.bz2` compressed archives) and `--enable-pcre2test-libreadline` (giving the test utility command-line history and editing capabilities).
-- **Static Linking Prevention:** Enforced dynamic linking exclusively by passing `--disable-static`.
+- **Static Linking Prevention:** Enforced dynamic linking exclusively by passing `--disable-static`
 - **Path & Documentation Enforcement:** Used `--prefix=/usr` and `--docdir=/usr/share/doc/pcre2-10.47` to maintain strict FHS compliance for binaries and versioned documentation.
 
 ## Build Notes
