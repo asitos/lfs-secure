@@ -1,0 +1,1 @@
+after 4-5 tries of reinstalling lfs from scratch, i have finally made a proper archived and compressed backup of my $LFS temporary system, from now on i can start over from here if something goes wrong later, which wasn't a possibility when i previously messed up packaged and root priviledges while installing packages
