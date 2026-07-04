@@ -4,7 +4,11 @@ this is a custom operating system i'm building completely from source, based on 
 
 the main goal here is proactive security. standard distros are great (i daily drive arch myself), but they usually trade security for out-of-the-box convenience. i wanted to see what it takes to secure an os from the absolute ground up, rather than just trying to patch holes and slap on firewalls later. 
 
-i recently presented the concept for this project, so now i'm actually getting my git workflow sorted out to track the build process properly.
+### current status: base system alive
+![Base LFS System Boot](assets/firstBoot.jpg)
+*(successful boot into the base unhardened system)*
+
+now that the foundation is stable, active development has shifted entirely to implementing the security layers.
 
 ### what's in this repo
 to be clear, you won't find a massive iso file or huge compiled binaries in here. this repo is basically the "recipe" to build the system. it tracks:
@@ -16,5 +20,4 @@ to be clear, you won't find a massive iso file or huge compiled binaries in here
 ### core focus
 - **kernel-level hardening:** tweaking compiler flags to severely limit the attack surface right at the core.
 - **least privilege:** everything is confined. if a service somehow gets compromised, the blast radius is minimal.
-
-still a heavy work in progress. mostly just figuring things out and breaking stuff as i compile.
+- **strict memory protections:** implementing defenses against standard buffer overflows and memory corruption tactics.
