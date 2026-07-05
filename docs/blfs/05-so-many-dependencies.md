@@ -1,0 +1,1 @@
+for every other package im trying to install, there's so many dependencies that are eating me up from the inside, but atleast im learning which packages are dependent on other packages, and how they work together to make a functional and secure system.
