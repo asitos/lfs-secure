@@ -1,23 +1,32 @@
 # lfs-secure
 
-this is a custom operating system i'm building completely from source, based on the linux from scratch (lfs) methodology. 
+this project is a bespoke, security-first operating system built entirely from source code following the linux from scratch (lfs) methodology. while mainstream distributions prioritize universal compatibility and ease of use, lfs-secure is built on the principle of proactive security. instead of retrofitting security patches onto a general-purpose os, this system is hardened from the kernel upwards to minimize the attack surface and enforce the principle of least privilege.
 
-the main goal here is proactive security. standard distros are great (i daily drive arch myself), but they usually trade security for out-of-the-box convenience. i wanted to see what it takes to secure an os from the absolute ground up, rather than just trying to patch holes and slap on firewalls later. 
+### status: hardened and audited
+**current lynis hardening index: 90**
 
-### current status: base system alive
-![Base LFS System Boot](assets/firstBoot.jpg)
-*(successful boot into the base unhardened system)*
+the base system is stable and has been audited against the lynis security benchmark. the hardening process focused on neutralizing threats at both the kernel and user-space boundaries.
 
-now that the foundation is stable, active development has shifted entirely to implementing the security layers.
+![base lfs system boot](assets/firstboot.jpg)
+*(successful boot of the hardened base system)*
 
 ### what's in this repo
-to be clear, you won't find a massive iso file or huge compiled binaries in here. this repo is basically the "recipe" to build the system. it tracks:
-- my custom kernel `.config` files (stripped legacy features, strict memory protections)
-- mandatory access control setups (apparmor profiles)
-- custom bash scripts to automate the tedious compiling phases
-- patches and build notes as i go
+this repo is the "recipe" for the build. it tracks:
+- **kernel configurations:** custom .config files optimized for security, featuring removed legacy features and hardened networking stacks.
+- **sysctl hardening:** a comprehensive set of kernel parameters to mitigate memory corruption, prevent stack overflows, and disable dangerous networking features like source routing and icmp redirects.
+- **automation scripts:** scripts for streamlined compilation, service management, and hardening configuration to ensure the build remains reproducible.
+- **security configurations:** hardened templates for sshd_config, pam modules, and file integrity monitoring configurations.
+- **documentation:** build notes, patch logs, and audit reports tracking the system’s security posture.
 
-### core focus
-- **kernel-level hardening:** tweaking compiler flags to severely limit the attack surface right at the core.
-- **least privilege:** everything is confined. if a service somehow gets compromised, the blast radius is minimal.
-- **strict memory protections:** implementing defenses against standard buffer overflows and memory corruption tactics.
+### core hardening focus
+- **kernel-level hardening:** the kernel is compiled with aggressive restrictions, stripping out unused drivers and legacy protocols (such as dccp, sctp, and tipc) to reduce the potential attack surface. memory protections are strictly enforced.
+- **proactive network defense:** the netfilter/iptables firewall is implemented at the kernel level. the ruleset is applied during the boot sequence to ensure the system is protected from network-based threats from the moment the network stack initializes.
+- **least privilege and blast radius reduction:** 
+    - system-wide enforcement of a strict umask (027) to ensure file permissions are never overly permissive.
+    - blacklisting of sensitive kernel modules such as usb-storage and firewire to prevent unauthorized hardware interaction.
+    - hardening of the ssh daemon by disabling password authentication, restricting allowed users, and modifying default ports.
+
+### build notes
+this system is an ongoing experiment. the build process is heavily logged to ensure that every security decision is intentional. moving forward, the focus will shift towards trying to break into the system's security through a raspberry pi i have to learn about penetrating a secure system.
+
+
