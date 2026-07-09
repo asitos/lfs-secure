@@ -7,8 +7,12 @@ this project is a bespoke, security-first operating system built entirely from s
 
 the base system is stable and has been audited against the lynis security benchmark. the hardening process focused on neutralizing threats at both the kernel and user-space boundaries.
 
-![base lfs system boot](assets/firstboot.jpg)
-*(successful boot of the hardened base system)*
+**first successful system boot (unhardened):**
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/1d754b91-13d2-44dd-8988-01c5faa47db4" 
+*(successful boot of the unhardened base system)*
+
+**final audit (hardened):**
+<img width="2833" height="1463" alt="Image" src="https://github.com/user-attachments/assets/b2b1ba00-03a9-4de3-9179-d2c68781ac4a" />
 
 ### what's in this repo
 this repo is the "recipe" for the build. it tracks:
