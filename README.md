@@ -22,9 +22,9 @@ the system has been rigorously audited using the lynis security benchmark. the g
 this repo is the "recipe" for the build. it tracks:
 - **kernel configurations:** custom .config files optimized for security, featuring removed legacy features and hardened networking stacks.
 - **sysctl hardening:** a comprehensive set of kernel parameters to mitigate memory corruption, prevent stack overflows, and disable dangerous networking features like source routing and icmp redirects.
-- **automation scripts:** scripts for streamlined compilation, service management, and hardening configuration to ensure the build remains reproducible.
-- **security configurations:** hardened templates for sshd_config, pam modules, and file integrity monitoring configurations.
-- **documentation:** build notes, patch logs, and audit reports tracking the system’s security posture.
+- **automation scripts:** scripts for streamlined compilation, service management, and hardening configuration to ensure the build remains reproducible at ![scripts](./scripts/).
+- **security configurations:** hardened templates for sshd_config, pam modules, and file integrity monitoring ![configurations](./configs).
+- **documentation:** build notes, patch logs, and audit reports tracking the system’s security posture logged in ![docs](./docs).
 
 ### architectural deep dive & kernel internals
 the core of this system runs on a custom-compiled 6.18.10 linux kernel. standard kernels are bloated with drivers and legacy protocols to support every possible hardware configuration. this kernel was stripped down to the bare metal requirements.
@@ -39,7 +39,7 @@ the core of this system runs on a custom-compiled 6.18.10 linux kernel. standard
     - deployed aggressive kernel parameters to mitigate memory corruption tactics. this includes restricting `kptr_restrict` to hide kernel pointers, enforcing `dmesg_restrict` to prevent unprivileged users from reading kernel logs, and disabling dangerous network vectors like icmp redirects and source routing.
 
 ### build notes
-this system is an ongoing experiment. the build process is heavily logged in ![docs](./docs) to ensure that every security decision is intentional. moving forward, the focus will shift towards trying to break into the system's security through a raspberry pi i have to learn about penetrating a secure system.
+this system is an ongoing experiment. the build process is heavily logged to ensure that every security decision is intentional. moving forward, the focus will shift towards trying to break into the system's security through a raspberry pi i have to learn about penetrating a secure system.
 
 ### what i learned 
 his project felt like a systems engineering course on its own. i didn't just learn to type commands; i learned how the linux kernel manages hardware, how the boot loader transfers control to systemd, and how user-space daemons interact with kernel-space subsystems. 
