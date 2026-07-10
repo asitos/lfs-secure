@@ -42,7 +42,7 @@ the core of this system runs on a custom-compiled 6.18.10 linux kernel. standard
 this system is an ongoing experiment. the build process is heavily logged to ensure that every security decision is intentional. moving forward, the focus will shift towards trying to break into the system's security through a raspberry pi i have to learn about penetrating a secure system.
 
 ### what i learned 
-his project felt like a systems engineering course on its own. i didn't just learn to type commands; i learned how the linux kernel manages hardware, how the boot loader transfers control to systemd, and how user-space daemons interact with kernel-space subsystems. 
+this project felt like a systems engineering course on its own. i learned how the linux kernel manages hardware, how the boot loader transfers control to systemd, and how user-space daemons interact with kernel-space subsystems. 
 
 **demystifying systemd and the boot process**
 before this, i thought systemd was just a black box that started and stopped services. building this system forced me to understand it as a complex, strict dependency tree of unit files and targets. when a custom kernel configuration and a massive memory mapping error caused background daemons to hang, standard commands like `systemctl disable` completely froze because the underlying dbus communication socket was locked. i learned how to manually recover the system by dropping into a root shell, navigating directly to `/etc/systemd/system/multi-user.target.wants/`, and physically ripping out the broken service symlinks. bypassing the dead dbus and untangling the boot sequence mechanically taught me that beneath the complex tooling, linux initialization is just a deeply nested structure of plain text files and symlinks.
